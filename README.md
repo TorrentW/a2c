@@ -20,10 +20,14 @@ token = WHATEVER
 others entries...
 ```
 
-3. Find the drive you want to use, and copy its `type = ...` to  `... token = ...` section.
+3. Find the drive you want to use, and copy its `type = ...` to  `... token = ...` section. Don't copy service_account line.
 4. Replace all linebreaks with `\n`
 5. Deploy with the button above, and paste that text in `RCLONE_CONFIG`
-6. Set `RCLONE_DESTINATION` to a path you want to store your downloaded files.
+6. Copy the json file of your sa account and deformat it in one line. Now paste it in `SA_CREDS` like this :-
+```
+service_account_credentials = <your service account creds in json format>
+```
+7. Set `RCLONE_DESTINATION` to a path you want to store your downloaded files.
 
 ## FAQ
 
