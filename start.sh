@@ -1,8 +1,9 @@
 #!/bin/bash
 
-if [[ -n $RCLONE_CONFIG && -n $RCLONE_DESTINATION ]]; then
+if [[ -n $RCLONE_CONFIG && -n $RCLONE_DESTINATION && -n $SA_CREDS ]]; then
 	echo "Rclone config detected"
 	echo -e "[DRIVE]\n$RCLONE_CONFIG" > rclone.conf
+        echo $SA_CREDS >> rclone.conf
 	echo "on-download-stop=./delete.sh" >> aria2c.conf
 	echo "on-download-complete=./on-complete.sh" >> aria2c.conf
 	chmod +x delete.sh
