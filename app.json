@@ -18,7 +18,11 @@
 		"RCLONE_DESTINATION": {
 			"description": "Path to store your file in your Rclone drive. Must start with a forward slash.",
 			"required": false
-		}
+		},
+                "SA_CREDS": {
+                        "description": "The service_account_credentials line from rclone config file",
+                        "required": false
+                }
 	},
 	"buildpacks": [
 		{
