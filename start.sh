@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [[ -n $RCLONE_CONFIG && -n $RCLONE_DESTINATION && -n $SA_CREDS ]]; then
+if [[ -n $RCLONE_CONFIG && -n $RCLONE_DESTINATION ]]; then
 	echo "Rclone config detected"
 	echo "[DRIVE]" > rclone.conf
         echo "$(echo $RCLONE_CONFIG_BASE64|base64 -d)" >> rclone.conf
