@@ -1,8 +1,7 @@
 # Heroku aria2c
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
-
-> Do not overuse it, or your account might be banned by Heroku.
+> Heroku banning account immediately after deploy.
+> 29-08-2019 | 17:56
 
 ## Optionally sync downloaded file to your cloud drive with Rclone
 
@@ -20,14 +19,10 @@ token = WHATEVER
 others entries...
 ```
 
-3. Find the drive you want to use, and copy its `type = ...` to  `... token = ...` section. Don't copy service_account line.
-4. Replace all linebreaks with `\n`
-5. Deploy with the button above, and paste that text in `RCLONE_CONFIG`
-6. Copy the json file of your sa account and deformat it in one line. Now paste it in `SA_CREDS` like this :-
-```
-service_account_credentials = <your service account creds in json format>
-```
-7. Set `RCLONE_DESTINATION` to a path you want to store your downloaded files.
+3. Find the drive you want to use, and copy its `type = ...` to  `... token = ...` section.
+4. Encode it with [`Base64`](https://www.base64encode.org)
+5. Deploy with the button above, and paste the string in `RCLONE_CONFIG`
+6. Set `RCLONE_DESTINATION` to a path you want to store your downloaded files. `/` for root_folder.
 
 ## FAQ
 
