@@ -21,9 +21,10 @@ echo -e "$(date +"%m/%d %H:%M:%S") ${INFO} Delete .aria2 file finish"
 echo "$(($(cat numUpload)+1))" > numUpload # Plus 1
 
 if [[ $2 -eq 1 ]]; then # single file
-	rclone -v --exclude "{*.aria2,*.torrent}" --config="rclone.conf" copy "$3" "DRIVE:$RCLONE_DESTINATION" 2>&1	
+	rclone -v --local-no-check-updated --ignore-existing --exclude "{*.html,*.aria2,*.torrent}" --config="rclone.conf" move "$3" "DRIVE:$RCLONE_DESTINATION" 2>&1	
 elif [[ $2 -gt 1 ]]; then # multiple file
-	rclone -v --exclude "{*.aria2,*.torrent}" --config="rclone.conf" copy "$topPath" "DRIVE:$RCLONE_DESTINATION/${relativePath%%/*}"
+	rclone -v --delete-empty-src-dirs --local-no-check-updated --ignore-existing --exclude "{*.html,*.aria2,*.torrent}" --config="rclone.conf" move "$topPath" "DRIVE:$RCLONE_DESTINATION/${relativePath%%/*}"
+        rclone --config="rclone.conf" rmdirs --leave-root "${topPath}" 2>&1
 fi
 
 echo "$(($(cat numUpload)-1))" > numUpload # Minus 1
